@@ -24,11 +24,13 @@
 #' 
 #' @export
 #' 
-multigroup <- function(modelList, group, standardize = "scale", standardize.type = "latent.linear", test.type = "III") {
+multigroup <- function(modelList, group, group_data, standardize = "scale", standardize.type = "latent.linear", test.type = "III") {
   
   name <- deparse(match.call()$modelList)
   
   data <- modelList$data
+  
+  data[, group] <- group_data
   
   modelList <- removeData(modelList, formulas = 1)
   

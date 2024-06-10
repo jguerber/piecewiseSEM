@@ -68,7 +68,7 @@ basisSet <- function(modelList, direction = NULL, interactions = FALSE) {
   b <- unlist(b, recursive = FALSE)
 
   b <- b[!sapply(b, is.null)]
-
+  
   if(length(b) > 0) {
     
     b <- filterExogenous(b, modelList, amat)
@@ -440,7 +440,7 @@ fixCatDir <- function(b, modelList) {
     
     var <- gsub(".*\\((.*)\\).*", "\\1", var)
     
-    data <- as.data.frame(modelList$data)
+    data <- as.data.frame(GetData(modelList))
     
     if(class(data[, var]) %in% c("factor", "character")) {
       
